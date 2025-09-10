@@ -1,0 +1,67 @@
+package com.product.model;
+
+public class ProductVO implements java.io.Serializable{
+	private	Integer	proid;
+	private String proname;
+	private Integer prostock;
+	private Integer proprice;
+	private Integer prostatus;
+	private String profrom;
+	private Integer fmemid;
+	
+	
+	
+	
+	public ProductVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Integer getProid() {
+		return proid;
+	}
+	public void setProid(Integer proid) {
+		this.proid = proid;
+	}
+	public String getProname() {
+		return proname;
+	}
+	public void setProname(String proname) {
+		this.proname = proname;
+	}
+	public Integer getProstock() {
+		return prostock;
+	}
+	public void setProstock(Integer prostock) {
+		this.prostock = prostock;
+	}
+	public Integer getProprice() {
+		return proprice;
+	}
+	public void setProprice(Integer proprice) {
+		this.proprice = proprice;
+	}
+	public Integer getProstatus() {
+		return prostatus;
+	}
+	public void setProstatus(Integer prostatus) {
+		this.prostatus = prostatus;
+	}
+	public String getProfrom() {
+		return profrom;
+	}
+	public void setProfrom(String profrom) {
+		this.profrom = profrom;
+	}
+
+	public Integer getFmemid() {
+		return fmemid;
+	}
+
+	public void setFmemid(Integer fmemid) {
+		this.fmemid = fmemid;
+	}
+	
+	
+
+}
