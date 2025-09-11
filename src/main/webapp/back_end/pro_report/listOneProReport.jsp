@@ -132,7 +132,7 @@ th, td {
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="修改"> <input type="hidden"
-							name="prorptid" value="${proReportList.prorptid}"> <input
+							name="prorptid" value="${proReport.prorptid}"> <input
 							type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>
@@ -141,7 +141,7 @@ th, td {
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="刪除"> <input type="hidden"
-							name="prorptid" value="${proReportList.prorptid}"> <input
+							name="prorptid" value="${proReport.prorptid}"> <input
 							type="hidden" name="action" value="delete">
 					</FORM>
 				</td>
