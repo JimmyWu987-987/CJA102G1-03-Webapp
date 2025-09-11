@@ -5,9 +5,9 @@
 <%@ page import="java.util.*"%>
 
 
-<%=request.getRequestURI()%><br>
+<%-- <%=request.getRequestURI()%><br>
 <%=request.getAttribute("list") %><br>
-<%=request.getAttribute("proid") %><br>
+<%=request.getAttribute("proid") %><br> --%>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 <%
 String proidStr = request.getParameter("proid");
