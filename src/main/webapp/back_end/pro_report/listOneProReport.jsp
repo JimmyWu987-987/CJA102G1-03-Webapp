@@ -5,41 +5,42 @@
 <%@ page import="java.util.*"%>
 
 
-<%-- <%=request.getRequestURI()%><br>
-<%=request.getAttribute("list") %><br>
-<%=request.getAttribute("proid") %><br> --%>
+<%-- <%=request.getRequestURI()%><br> --%>
+<%-- <%=request.getAttribute("list") %><br> --%>
+<%-- <%=request.getAttribute("proid") %><br> --%>
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 <%
-String proidStr = request.getParameter("proid");
-Integer proid = null;
+List<ProReportVO> list = (List<ProReportVO>)session.getAttribute("list");
+// String proidStr = request.getParameter("proid");
+// Integer proid = null;
 
-if (proidStr != null && !proidStr.trim().isEmpty()) {
-	try {
-		proid = Integer.valueOf(proidStr);
-	} catch (NumberFormatException e) {
+// if (proidStr != null && !proidStr.trim().isEmpty()) {
+// 	try {
+// 		proid = Integer.valueOf(proidStr);
+// 	} catch (NumberFormatException e) {
 
-	}
-}
+// 	}
+// }
 
-ProReportService proReportSvc = new ProReportService();
-List<ProReportVO> list = new ArrayList<ProReportVO>();
+// ProReportService proReportSvc = new ProReportService();
+// List<ProReportVO> list = new ArrayList<ProReportVO>();
 
-// 檢查 proid 是否存在
-if (proid != null) {
-	list = proReportSvc.getOneProduct(proid);
-}
+// // 檢查 proid 是否存在
+// if (proid != null) {
+// 	list = proReportSvc.getOneProduct(proid);
+// }
 
-// 如果 list 有值，從第一筆資料中取得proid
-if (list != null && !list.isEmpty()) {
-	proid = list.get(0).getProid();
-}
+// // 如果 list 有值，從第一筆資料中取得proid
+// if (list != null && !list.isEmpty()) {
+// 	proid = list.get(0).getProid();
+// }
 
 // 將查詢的 list 及 proid 存入 request 屬性 
-pageContext.setAttribute("list", list);
+// pageContext.setAttribute("list", list);
 // request.setAttribute("proid", proid);
 
 
-// pageContext.setAttribute("proid", proid);
+//pageContext.setAttribute("proid", proid);
 %>
 
 <html>
@@ -115,23 +116,23 @@ th, td {
 		</tr>
 
 		<%@ include file="page1.file"%>
-		<c:forEach var="proReportList" items="${list}" begin="<%=pageIndex%>"
+		<c:forEach var="proReport" items="${list}" begin="<%=pageIndex%>"
 			end="<%=pageIndex+rowsPerPage-1%>">
 
 			<tr>
-				<td>${proReportList.prorptid}</td>
-				<td>${proReportList.proid}</td>
-				<td>${proReportList.memid}</td>
-				<td>${proReportList.prorptstatus}</td>
-				<td>${proReportList.prorptat}</td>
-				<td>${proReportList.prorpttitle}</td>
-				<td>${proReportList.prorptcont}</td>
+				<td>${proReport.prorptid}</td>
+				<td>${proReport.proid}</td>
+				<td>${proReport.memid}</td>
+				<td>${proReport.prorptstatus}</td>
+				<td>${proReport.prorptat}</td>
+				<td>${proReport.prorpttitle}</td>
+				<td>${proReport.prorptcont}</td>
 				<td>
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="修改"> <input type="hidden"
-							name="prorptid" value="${proReportList.prorptid}"> <input
+							name="prorptid" value="${proReport.prorptid}"> <input
 							type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>
@@ -140,7 +141,7 @@ th, td {
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="刪除"> <input type="hidden"
-							name="prorptid" value="${proReportList.prorptid}"> <input
+							name="prorptid" value="${proReport.prorptid}"> <input
 							type="hidden" name="action" value="delete">
 					</FORM>
 				</td>
