@@ -129,7 +129,9 @@ public class ProReportServlet extends HttpServlet {
 			}
 
 			/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
-			req.setAttribute("proReportList", proReportList); // 資料庫取出的proReportVO物件,存入req
+			req.getSession().setAttribute("list", proReportList); // 資料庫取出的proReportVO物件,存入req
+//			req.setAttribute("proid", proid);
+			
 			String url = "/back_end/pro_report/listOneProReport.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneProReport.jsp
 			successView.forward(req, res);
@@ -197,6 +199,7 @@ public class ProReportServlet extends HttpServlet {
 
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
+
 				req.setAttribute("proReportVO", proReportVO); // 含有輸入格式錯誤的empVO物件,也存入req
 				RequestDispatcher failureView = req.getRequestDispatcher("/front_end/pro_report/addProReport.jsp");
 				failureView.forward(req, res);
