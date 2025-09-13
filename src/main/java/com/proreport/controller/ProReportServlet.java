@@ -227,7 +227,7 @@ public class ProReportServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			/*************************** 1.接收請求參數 ****************************************/
-			Integer prorptid = Integer.valueOf(req.getParameter("prorptid"));
+			Integer prorptid = Integer.valueOf(req.getParameter("proRptId"));
 
 			/*************************** 2.開始查詢資料 ****************************************/
 			ProReportService proReportSvc = new ProReportService();
@@ -248,7 +248,7 @@ public class ProReportServlet extends HttpServlet {
 
 			/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
 			Integer prorptid = Integer.valueOf(req.getParameter("proRptId"));
-
+			
 			Integer proid = null;
 			try {
 				proid = Integer.valueOf(req.getParameter("proId").trim());
@@ -313,8 +313,11 @@ public class ProReportServlet extends HttpServlet {
 					prorptcont);
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+			String successMsgs = "更新審核狀態成功！";
+			req.setAttribute("successMsgs", successMsgs);
+		
 			req.setAttribute("proReportVO", proReportVO); // 資料庫取出的proReportVO物件,存入req
-			String url = "/back_end/pro_report/listOneProReport.jsp";
+			String url = "/back_end/pro_report/update_proReport_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_proReport_input.jsp
 			successView.forward(req, res);
 		}

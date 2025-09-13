@@ -91,13 +91,13 @@
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" style="margin-bottom: 0px;">
 			     <input type="submit" value="修改">
-			     <input type="hidden" name="prorptid"  value="${proReportVO.proRptId}">
+			     <input type="hidden" name="proRptId"  value="${proReportVO.proRptId}">
 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM>
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" style="margin-bottom: 0px;">
 			     <input type="submit" value="刪除">
-			     <input type="hidden" name="prorptid"  value="${proReportVO.proRptId}">
+			     <input type="hidden" name="proRptId"  value="${proReportVO.proRptId}">
 			     <input type="hidden" name="action" value="delete"></FORM>
 			</td>
 		</tr>

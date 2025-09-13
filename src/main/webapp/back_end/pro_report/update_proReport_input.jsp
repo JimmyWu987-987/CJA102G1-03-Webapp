@@ -79,24 +79,24 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 	</tr>
 	<tr>
 		<td>商品編號:</td>
-		<td><input type="TEXT" name="proid" value="<%=proReportVO.getProId()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="proId" value="<%=proReportVO.getProId()%>" size="45" readonly/></td>
 	</tr>
 	<tr>
 		<td>申訴會員編號:</td>
-		<td><input type="TEXT" name="memid"   value="<%=proReportVO.getMemId()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="memId"   value="<%=proReportVO.getMemId()%>" size="45" readonly/></td>
 	</tr>
 	
 	<tr>
 		<td>檢舉日期:</td>
-		<td><input name="prorptat" type="text" value="<%=proReportVO.getProRptAt()%>" readonly ></td> 
+		<td><input name="proRptAt" type="text" value="<%=proReportVO.getProRptAt()%>" readonly ></td> 
 	</tr>
 	<tr>
 		<td>檢舉標題:</td>
-		<td><input type="TEXT" name="prorpttitle"   value="<%=proReportVO.getProRptTitle()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="proRptTitle"   value="<%=proReportVO.getProRptTitle()%>" size="45" readonly/></td>
 	</tr>
 	<tr>
 		<td>檢舉內容:</td>
-		<td><textarea name="prorptcont" rows="4" cols="30" readonly><%=proReportVO.getProRptCont()%></textarea></td>
+		<td><textarea name="proRptCont" rows="4" cols="30" readonly><%=proReportVO.getProRptCont()%></textarea></td>
 	</tr>
 	
 <%-- 	<tr>
@@ -123,7 +123,20 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="proRptId" value="<%=proReportVO.getProRptId()%>">
 <input type="submit" value="送出修改"></FORM>
+
+<a href="${pageContext.request.contextPath}/back_end/pro_report/listAllProReport.jsp">回上一頁</a>
+
+
+<%-- 新增成功列表 --%>
+<c:if test="${not empty successMsgs}">
+	<ul>
+			<li style="color:red">${successMsgs}</li>
+	</ul>
+</c:if>
+
 </body>
+
+
 
 
 
