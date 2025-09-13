@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.proreport.service.*"%>
 <%@ page import="com.proreport.model.*"%>
 <%@ page import="java.util.*"%>
@@ -124,7 +125,7 @@ th, td {
 				<td>${proReport.proid}</td>
 				<td>${proReport.memid}</td>
 				<td>${proReport.prorptstatus}</td>
-				<td>${proReport.prorptat}</td>
+				<td><fmt:formatDate value="${proReport.prorptat}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td>${proReport.prorpttitle}</td>
 				<td>${proReport.prorptcont}</td>
 				<td>

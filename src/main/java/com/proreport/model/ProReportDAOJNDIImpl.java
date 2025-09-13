@@ -42,12 +42,12 @@ public class ProReportDAOJNDIImpl implements ProReportDAO {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setInt(1, proReportVO.getProid());
-			pstmt.setInt(2, proReportVO.getMemid());
-			pstmt.setInt(3, proReportVO.getProrptstatus());
-			pstmt.setTimestamp(4, proReportVO.getProrptat());
-			pstmt.setString(5, proReportVO.getProrpttitle());
-			pstmt.setString(6, proReportVO.getProrptcont());
+			pstmt.setInt(1, proReportVO.getProId());
+			pstmt.setInt(2, proReportVO.getMemId());
+			pstmt.setInt(3, proReportVO.getProRptStatus());
+			pstmt.setTimestamp(4, proReportVO.getProRptAt());
+			pstmt.setString(5, proReportVO.getProRptTitle());
+			pstmt.setString(6, proReportVO.getProRptCont());
 
 			pstmt.executeUpdate();
 
@@ -69,13 +69,13 @@ public class ProReportDAOJNDIImpl implements ProReportDAO {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setInt(1, proReportVO.getProid());
-			pstmt.setInt(2, proReportVO.getMemid());
-			pstmt.setInt(3, proReportVO.getProrptstatus());
-			pstmt.setTimestamp(4, proReportVO.getProrptat());
-			pstmt.setString(5, proReportVO.getProrpttitle());
-			pstmt.setString(6, proReportVO.getProrptcont());
-			pstmt.setInt(7, proReportVO.getProrptid());
+			pstmt.setInt(1, proReportVO.getProId());
+			pstmt.setInt(2, proReportVO.getMemId());
+			pstmt.setInt(3, proReportVO.getProRptStatus());
+			pstmt.setTimestamp(4, proReportVO.getProRptAt());
+			pstmt.setString(5, proReportVO.getProRptTitle());
+			pstmt.setString(6, proReportVO.getProRptCont());
+			pstmt.setInt(7, proReportVO.getProRptId());
 
 			pstmt.executeUpdate();
 
@@ -125,13 +125,13 @@ public class ProReportDAOJNDIImpl implements ProReportDAO {
 
 			while (rs.next()) {
 				proReport = new ProReportVO();
-				proReport.setProrptid(rs.getInt("pro_rpt_id"));
-				proReport.setProid(rs.getInt("pro_id"));
-				proReport.setMemid(rs.getInt("mem_id"));
-				proReport.setProrptstatus(rs.getInt("pro_rpt_status"));
-				proReport.setProrptat(rs.getTimestamp("pro_rpt_at"));
-				proReport.setProrpttitle(rs.getString("pro_rpt_title"));
-				proReport.setProrptcont(rs.getString("pro_rpt_cont"));
+				proReport.setProRptId(rs.getInt("pro_rpt_id"));
+				proReport.setProId(rs.getInt("pro_id"));
+				proReport.setMemId(rs.getInt("mem_id"));
+				proReport.setProRptStatus(rs.getInt("pro_rpt_status"));
+				proReport.setProRptAt(rs.getTimestamp("pro_rpt_at"));
+				proReport.setProRptTitle(rs.getString("pro_rpt_title"));
+				proReport.setProRptCont(rs.getString("pro_rpt_cont"));
 
 			}
 
@@ -162,13 +162,13 @@ public class ProReportDAOJNDIImpl implements ProReportDAO {
 
 			while (rs.next()) {
 				proReport = new ProReportVO();
-				proReport.setProrptid(rs.getInt("pro_rpt_id"));
-				proReport.setProid(rs.getInt("pro_id"));
-				proReport.setMemid(rs.getInt("mem_id"));
-				proReport.setProrptstatus(rs.getInt("pro_rpt_status"));
-				proReport.setProrptat(rs.getTimestamp("pro_rpt_at"));
-				proReport.setProrpttitle(rs.getString("pro_rpt_title"));
-				proReport.setProrptcont(rs.getString("pro_rpt_cont"));
+				proReport.setProRptId(rs.getInt("pro_rpt_id"));
+				proReport.setProId(rs.getInt("pro_id"));
+				proReport.setMemId(rs.getInt("mem_id"));
+				proReport.setProRptStatus(rs.getInt("pro_rpt_status"));
+				proReport.setProRptAt(rs.getTimestamp("pro_rpt_at"));
+				proReport.setProRptTitle(rs.getString("pro_rpt_title"));
+				proReport.setProRptCont(rs.getString("pro_rpt_cont"));
 
 				proReportList.add(proReport);
 
@@ -199,13 +199,13 @@ public class ProReportDAOJNDIImpl implements ProReportDAO {
 
 			while (rs.next()) {
 				proReport = new ProReportVO();
-				proReport.setProrptid(rs.getInt("pro_rpt_id"));
-				proReport.setProid(rs.getInt("pro_id"));
-				proReport.setMemid(rs.getInt("mem_id"));
-				proReport.setProrptstatus(rs.getInt("pro_rpt_status"));
-				proReport.setProrptat(rs.getTimestamp("pro_rpt_at"));
-				proReport.setProrpttitle(rs.getString("pro_rpt_title"));
-				proReport.setProrptcont(rs.getString("pro_rpt_cont"));
+				proReport.setProRptId(rs.getInt("pro_rpt_id"));
+				proReport.setProId(rs.getInt("pro_id"));
+				proReport.setMemId(rs.getInt("mem_id"));
+				proReport.setProRptStatus(rs.getInt("pro_rpt_status"));
+				proReport.setProRptAt(rs.getTimestamp("pro_rpt_at"));
+				proReport.setProRptTitle(rs.getString("pro_rpt_title"));
+				proReport.setProRptCont(rs.getString("pro_rpt_cont"));
 
 				proReportList.add(proReport);
 			}

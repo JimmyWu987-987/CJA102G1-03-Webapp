@@ -5,13 +5,13 @@ import java.util.List;
 public interface ProReportDAO {
 		public void insert(ProReportVO proReportVO);
 		public void update(ProReportVO proReportVO);
-		public void delete(Integer prorptid);
+		public void delete(Integer proRptId);
 		
 //		// 單筆查詢(回傳單筆)
-		ProReportVO findByPrimaryKey(Integer prorptid);	
+		ProReportVO findByPrimaryKey(Integer proRptId);	
 		
 		// 單筆查詢（回傳多筆）
-		List<ProReportVO> findProid(Integer proid);
+		List<ProReportVO> findProid(Integer proRptId);
 		
 		// 多筆查詢(回傳一個集合)
 		List<ProReportVO> getAll();
