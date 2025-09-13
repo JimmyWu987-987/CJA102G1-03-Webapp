@@ -104,7 +104,7 @@ th, td {
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="修改"> <input type="hidden"
-							name="prorptid" value="${proReport.proRptId}"> <input
+							name="proRptId" value="${proReport.proRptId}"> <input
 							type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>

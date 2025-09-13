@@ -75,28 +75,28 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 <table>
 	<tr>
 		<td>檢舉文章編號:<font color=red><b>*</b></font></td>
-		<td><%=proReportVO.getProrptid()%></td>
+		<td><%=proReportVO.getProRptId()%></td>
 	</tr>
 	<tr>
 		<td>商品編號:</td>
-		<td><input type="TEXT" name="proid" value="<%=proReportVO.getProid()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="proid" value="<%=proReportVO.getProId()%>" size="45" readonly/></td>
 	</tr>
 	<tr>
 		<td>申訴會員編號:</td>
-		<td><input type="TEXT" name="memid"   value="<%=proReportVO.getMemid()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="memid"   value="<%=proReportVO.getMemId()%>" size="45" readonly/></td>
 	</tr>
 	
 	<tr>
 		<td>檢舉日期:</td>
-		<td><input name="prorptat" type="text" value="<%=proReportVO.getProrptat()%>" readonly ></td> 
+		<td><input name="prorptat" type="text" value="<%=proReportVO.getProRptAt()%>" readonly ></td> 
 	</tr>
 	<tr>
 		<td>檢舉標題:</td>
-		<td><input type="TEXT" name="prorpttitle"   value="<%=proReportVO.getProrpttitle()%>" size="45" readonly/></td>
+		<td><input type="TEXT" name="prorpttitle"   value="<%=proReportVO.getProRptTitle()%>" size="45" readonly/></td>
 	</tr>
 	<tr>
 		<td>檢舉內容:</td>
-		<td><textarea name="prorptcont" rows="4" cols="30" readonly><%=proReportVO.getProrptcont()%></textarea></td>
+		<td><textarea name="prorptcont" rows="4" cols="30" readonly><%=proReportVO.getProRptCont()%></textarea></td>
 	</tr>
 	
 <%-- 	<tr>
@@ -107,11 +107,11 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 	<tr>
 		<td>審核狀態:</td>
 		<td>
-		<select size="1" name="prorptstatus" id="prorptstatusSelect">
-		<option value="0" <%=proReportVO.getProrptstatus() == 0 ? "selected" : ""%>>編輯中</option>
-		<option value="1" <%=proReportVO.getProrptstatus() == 1 ? "selected" : ""%>>待審核</option>
-		<option value="2" <%=proReportVO.getProrptstatus() == 2 ? "selected" : ""%>>審核通過</option>
-		<option value="3" <%=proReportVO.getProrptstatus() == 3 ? "selected" : ""%>>審核未過</option>
+		<select size="1" name="proRptStatus" id="proRptStatusSelect">
+		<option value="0" <%=proReportVO.getProRptStatus() == 0 ? "selected" : ""%>>編輯中</option>
+		<option value="1" <%=proReportVO.getProRptStatus() == 1 ? "selected" : ""%>>待審核</option>
+		<option value="2" <%=proReportVO.getProRptStatus() == 2 ? "selected" : ""%>>審核通過</option>
+		<option value="3" <%=proReportVO.getProRptStatus() == 3 ? "selected" : ""%>>審核未過</option>
 	
 		</select>
 		</td>
@@ -121,7 +121,7 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 </table>
 <br>
 <input type="hidden" name="action" value="update">
-<input type="hidden" name="prorptid" value="<%=proReportVO.getProrptid()%>">
+<input type="hidden" name="proRptId" value="<%=proReportVO.getProRptId()%>">
 <input type="submit" value="送出修改"></FORM>
 </body>
 
