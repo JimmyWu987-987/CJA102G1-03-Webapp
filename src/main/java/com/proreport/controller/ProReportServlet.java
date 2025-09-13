@@ -36,7 +36,7 @@ public class ProReportServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-			String str = req.getParameter("prorptid");
+			String str = req.getParameter("proId");
 			if (str == null || (str.trim()).length() == 0) {
 				errorMsgs.add("請輸入檢舉文章編號");
 			}
@@ -90,7 +90,7 @@ public class ProReportServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
-			String str = req.getParameter("proid");
+			String str = req.getParameter("proId");
 			if (str == null || (str.trim()).length() == 0) {
 				errorMsgs.add("請輸入檢舉文章編號");
 			}
@@ -130,7 +130,6 @@ public class ProReportServlet extends HttpServlet {
 
 			/*************************** 3.查詢完成,準備轉交(Send the Success view) *************/
 			req.getSession().setAttribute("list", proReportList); // 資料庫取出的proReportVO物件,存入req
-//			req.setAttribute("proid", proid);
 			
 			String url = "/back_end/pro_report/listOneProReport.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneProReport.jsp
@@ -150,7 +149,7 @@ public class ProReportServlet extends HttpServlet {
 			/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
 			Integer proid = null;
 			try {
-				proid = Integer.valueOf(req.getParameter("proid").trim());
+				proid = Integer.valueOf(req.getParameter("proId").trim());
 			} catch (NumberFormatException e) {
 				errorMsgs.add("請輸入商品編號!");
 			}

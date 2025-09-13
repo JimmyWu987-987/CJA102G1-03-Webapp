@@ -12,36 +12,7 @@
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 <%
 List<ProReportVO> list = (List<ProReportVO>)session.getAttribute("list");
-// String proidStr = request.getParameter("proid");
-// Integer proid = null;
 
-// if (proidStr != null && !proidStr.trim().isEmpty()) {
-// 	try {
-// 		proid = Integer.valueOf(proidStr);
-// 	} catch (NumberFormatException e) {
-
-// 	}
-// }
-
-// ProReportService proReportSvc = new ProReportService();
-// List<ProReportVO> list = new ArrayList<ProReportVO>();
-
-// // 檢查 proid 是否存在
-// if (proid != null) {
-// 	list = proReportSvc.getOneProduct(proid);
-// }
-
-// // 如果 list 有值，從第一筆資料中取得proid
-// if (list != null && !list.isEmpty()) {
-// 	proid = list.get(0).getProid();
-// }
-
-// 將查詢的 list 及 proid 存入 request 屬性 
-// pageContext.setAttribute("list", list);
-// request.setAttribute("proid", proid);
-
-
-//pageContext.setAttribute("proid", proid);
 %>
 
 <html>
@@ -121,19 +92,19 @@ th, td {
 			end="<%=pageIndex+rowsPerPage-1%>">
 
 			<tr>
-				<td>${proReport.prorptid}</td>
-				<td>${proReport.proid}</td>
-				<td>${proReport.memid}</td>
-				<td>${proReport.prorptstatus}</td>
-				<td><fmt:formatDate value="${proReport.prorptat}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td>${proReport.prorpttitle}</td>
-				<td>${proReport.prorptcont}</td>
+				<td>${proReport.proRptId}</td>
+				<td>${proReport.proId}</td>
+				<td>${proReport.memId}</td>
+				<td>${proReport.proRptStatus}</td>
+				<td><fmt:formatDate value="${proReport.proRptAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td>${proReport.proRptTitle}</td>
+				<td>${proReport.proRptCont}</td>
 				<td>
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="修改"> <input type="hidden"
-							name="prorptid" value="${proReport.prorptid}"> <input
+							name="prorptid" value="${proReport.proRptId}"> <input
 							type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>
@@ -142,7 +113,7 @@ th, td {
 						ACTION="<%=request.getContextPath()%>/proreport/proreport.do"
 						style="margin-bottom: 0px;">
 						<input type="submit" value="刪除"> <input type="hidden"
-							name="prorptid" value="${proReport.prorptid}"> <input
+							name="proRptId" value="${proReport.proRptId}"> <input
 							type="hidden" name="action" value="delete">
 					</FORM>
 				</td>
