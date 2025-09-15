@@ -122,9 +122,18 @@ ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
 <br>
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="proRptId" value="<%=proReportVO.getProRptId()%>">
-<input type="submit" value="送出修改"></FORM>
+<input type="submit" value="送出修改">
 
-<a href="${pageContext.request.contextPath}/back_end/pro_report/listAllProReport.jsp">回上一頁</a>
+</FORM>
+
+<form method="post" action="<%=request.getContextPath()%>/proreport/proreport.do">
+	<input type="hidden" name="proId" value="<%=proReportVO.getProId()%>">
+	<input type="hidden" name="action" value="backToPage">
+	<input type="submit" value="回上一頁">
+</form>
+
+
+
 
 
 <%-- 新增成功列表 --%>
