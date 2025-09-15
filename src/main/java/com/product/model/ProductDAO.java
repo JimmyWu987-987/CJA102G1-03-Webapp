@@ -22,15 +22,15 @@ public class ProductDAO implements ProductDAO_interface {
 	}
 
 	private static final String INSERT_STMT = 
-		"INSERT INTO Product (PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,f_mem_id) VALUES (?, ?, ?, ?, ?, ?)";
+		"INSERT INTO Product (PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,fmem_id) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_STMT = 
-		"SELECT PRO_ID, PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,f_mem_id FROM PRODUCT order by PRO_ID";
+		"SELECT PRO_ID, PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,fmem_id FROM PRODUCT order by PRO_ID";
 	private static final String GET_ONE_STMT = 
-		"SELECT PRO_ID, PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,f_mem_id FROM PRODUCT where PRO_ID = ?";
+		"SELECT PRO_ID, PRO_NAME, PRO_STOCK, PRO_PRICE, PRO_STATUS, pro_from,fmem_id FROM PRODUCT where PRO_ID = ?";
 	private static final String DELETE = 
 		"DELETE FROM PRODUCT where PRO_ID = ?";
 	private static final String UPDATE = 
-		"UPDATE PRODUCT set PRO_NAME=?, PRO_STOCK=?, PRO_PRICE=?, PRO_STATUS=?, pro_from=? ,f_mem_id=? where PRO_ID = ?";
+		"UPDATE PRODUCT set PRO_NAME=?, PRO_STOCK=?, PRO_PRICE=?, PRO_STATUS=?, pro_from=? ,fmem_id=? where PRO_ID = ?";
 
 	@Override
 	public void insert(ProductVO productVO) {

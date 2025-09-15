@@ -50,8 +50,7 @@
 </c:if>
 
 <ul>
-  <li><a href='<%=request.getContextPath()%>/back_end/pro_report/listAllProReport.jsp'>List</a> all ProReport.  <br><br></li>
-  
+<%--   <li><a href='<%=request.getContextPath()%>/back_end/pro_report/listAllProReport.jsp'>List</a> all ProReport.  <br><br></li> --%>
   
   <li>
     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" >
@@ -92,8 +91,6 @@
        <input type="submit" value="送出">
     </FORM>
   </li>
-  
-  
 </ul>
 
 
@@ -102,6 +99,9 @@
 <ul>
   <li><a href='<%=request.getContextPath()%>/front_end/pro_report/addProReport.jsp'>Add</a> a new ProReport.</li>
 </ul>
+
+<jsp:include page="listAllProReport.jsp"></jsp:include>
+
 
 </body>
 </html>
