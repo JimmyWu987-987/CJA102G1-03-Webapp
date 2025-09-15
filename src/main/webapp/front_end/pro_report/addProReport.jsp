@@ -86,38 +86,38 @@ th, td {
 				class="com.product.service.ProductService" />
 			<tr>
 				<td>投訴商品:<font color=red><b>*</b></font></td>
-				<td><select size="1" name="proid" id="proidSelect">
+				<td><select size="1" name="proId" id="proidSelect">
 						<option value="">請選擇商品編號</option>
 						<c:forEach var="productVO" items="${productSvc.all}">
 							<option value="${productVO.proid}"
-								${(proReportVO.proid == productVO.proid)? 'selected' : '' }>
+								${(proReportVO.proId == productVO.proid)? 'selected' : '' }>
 								${productVO.proname}</option>
 						</c:forEach>
 				</select></td>
 			</tr>
 			<tr>
 				<td>申訴會員編號:</td>
-				<td><input name="memid" id="" type="text" 
-					value="<%=(proReportVO == null) ? "" : proReportVO.getMemid()%>"></td>
+				<td><input name="memId" id="" type="text" 
+					value="<%=(proReportVO == null) ? "" : proReportVO.getMemId()%>"></td>
 			</tr>
 			
 			<!-- 檢舉審核狀態，預設為 0（審核中） -->
-			<input name="prorptstatus" type="hidden" value="0" readonly>
+			<input name="proRptStatus" type="hidden" value="0" readonly>
 
 			<tr>
 				<td>檢舉日期:</td>
-				<td><input name="prorptat" id="f_date1" type="text" value="" readonly></td>
+				<td><input name="proRptAt" id="f_date1" type="text" value="" readonly></td>
 			</tr>
 			<tr>
 				<td>檢舉標題:</td>
-				<td><input type="TEXT" name="prorpttitle"
-					value="<%=(proReportVO == null) ? "" : proReportVO.getProrpttitle()%>"
+				<td><input type="TEXT" name="proRptTitle"
+					value="<%=(proReportVO == null) ? "" : proReportVO.getProRptTitle()%>"
 					size="45" /></td>
 			</tr>
 
 			<tr>
 				<td>檢舉內容:</td>
-				<td><textarea name="prorptcont" rows="4" cols="30"><%=(proReportVO == null) ? "" : proReportVO.getProrptcont()%></textarea></td>
+				<td><textarea name="proRptCont" rows="4" cols="30"><%=(proReportVO == null) ? "" : proReportVO.getProRptCont()%></textarea></td>
 			</tr>
 
 		</table>
@@ -134,7 +134,7 @@ th, td {
 <%
 java.sql.Timestamp prorptat = null;
 try {
-	prorptat = proReportVO.getProrptat();
+	prorptat = proReportVO.getProRptAt();
 } catch (Exception e) {
 	prorptat = new java.sql.Timestamp(System.currentTimeMillis());
 }

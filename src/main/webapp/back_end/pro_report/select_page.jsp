@@ -56,7 +56,7 @@
   <li>
     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" >
         <b>輸入被檢舉商品編號:</b>
-        <input type="text" name="proid">
+        <input type="text" name="proId">
         <input type="hidden" name="action" value="getOneProduct_For_Display">
         <input type="submit" value="送出">
     </FORM>
@@ -71,7 +71,7 @@
     // 使用 Set 來儲存不重複的商品 ID
     Set<Integer> distinctProids = new TreeSet<>();
     for (ProReportVO report : allReports) {
-        distinctProids.add(report.getProid());
+        distinctProids.add(report.getProId());
     }
     
     // 將 Set 轉換為 List，以便在 JSTL 中循環
@@ -82,7 +82,7 @@
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" >
 
        <b>查詢被檢舉商品編號:</b>
-       <select size="1" name="proid">
+       <select size="1" name="proId">
        	<option value="">請選擇商品編號</option>
          <c:forEach var="proReportVO" items="${reportedProids}" >
           <option value="${proReportVO}">${proReportVO}

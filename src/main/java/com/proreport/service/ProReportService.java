@@ -14,50 +14,50 @@ public class ProReportService {
 	}
 
 	// 新增
-	public ProReportVO addProReport(Integer proid, Integer memid, Integer prorptstatus, java.sql.Timestamp prorptat,
-			String prorpttitle, String prorptcont) {
+	public ProReportVO addProReport(Integer proId, Integer memId, Integer proRptStatus, java.sql.Timestamp proRptAt,
+			String proRptTitle, String proRptCont) {
 
 		ProReportVO proReportVO = new ProReportVO();
-		proReportVO.setProid(proid);
-		proReportVO.setMemid(memid);
-		proReportVO.setProrptstatus(prorptstatus);
-		proReportVO.setProrptat(prorptat);
-		proReportVO.setProrpttitle(prorpttitle);
-		proReportVO.setProrptcont(prorptcont);
+		proReportVO.setProId(proId);
+		proReportVO.setMemId(memId);
+		proReportVO.setProRptStatus(proRptStatus);
+		proReportVO.setProRptAt(proRptAt);
+		proReportVO.setProRptTitle(proRptTitle);
+		proReportVO.setProRptCont(proRptCont);
 		dao.insert(proReportVO);
 
 		return proReportVO;
 	}
 
 	// 修改
-	public ProReportVO updateProReport(Integer prorptid, Integer proid, Integer memid, Integer prorptstatus,
-			java.sql.Timestamp prorptat, String prorpttitle, String prorptcont) {
+	public ProReportVO updateProReport(Integer prorptid, Integer proId, Integer memId, Integer proRptStatus,
+			java.sql.Timestamp proRptAt, String proRptTitle, String proRptCont) {
 		
 		ProReportVO proReportVO = new ProReportVO();
-		proReportVO.setProrptid(prorptid);
-		proReportVO.setProid(proid);
-		proReportVO.setMemid(memid);
-		proReportVO.setProrptstatus(prorptstatus);
-		proReportVO.setProrptat(prorptat);
-		proReportVO.setProrpttitle(prorpttitle);
-		proReportVO.setProrptcont(prorptcont);
+		proReportVO.setProRptId(prorptid);
+		proReportVO.setProId(proId);
+		proReportVO.setMemId(memId);
+		proReportVO.setProRptStatus(proRptStatus);
+		proReportVO.setProRptAt(proRptAt);
+		proReportVO.setProRptTitle(proRptTitle);
+		proReportVO.setProRptCont(proRptCont);
 		dao.update(proReportVO);
 
 		return proReportVO;
 	}
 
 	// 刪除
-	public void deleteProReport(Integer prorptid) {
-		dao.delete(prorptid);
+	public void deleteProReport(Integer proRptId) {
+		dao.delete(proRptId);
 	}
 	// 單筆查詢，	單筆結果。
-	public ProReportVO getOneProReport(Integer prorptid) {
-		return dao.findByPrimaryKey(prorptid);
+	public ProReportVO getOneProReport(Integer proRptId) {
+		return dao.findByPrimaryKey(proRptId);
 	}
 	
 	// 單筆查詢，多筆結果。
-	public List<ProReportVO> getOneProduct(Integer proid) {
-		return dao.findProid(proid);
+	public List<ProReportVO> getOneProduct(Integer proId) {
+		return dao.findProid(proId);
 	}
 
 	// 全部查詢
