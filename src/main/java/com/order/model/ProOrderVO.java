@@ -17,36 +17,52 @@ public class ProOrderVO {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "pro_ord_id")
 	private Integer proOrdId;
+	
 	@Column(name = "mem_id")
 	private Integer menId;
+	
 	@Column(name = "cpn_holder_detail_id")
 	private Integer cpnHolderDetailId;
+	
 	@Column(name = "pro_ord_date")
 	private Timestamp proOrdDate;
+	
 	@Column(name = "pro_ord_status")
 	private byte proOrdStatus;
+	
 	@Column(name = "pro_pay_status")
 	private byte proPayStatus;
+	
 	@Column(name = "pro_total")
 	private Integer proTotal;
+	
 	@Column(name = "pro_ord_ship_fee")
 	private Integer proOrdShipFee;
+	
 	@Column(name = "pro_ord_cpndisc")
 	private Integer proOrdCpndisc;
+	
 	@Column(name = "pro_ord_pointdisc")
 	private Integer proOrdPointdisc;
+	
 	@Column(name = "pro_ord_pointget")
 	private Integer proOrdPointGet;
+	
 	@Column(name = "pro_ord_grand_total")
 	private Integer proOrdGrandTotal;
+	
 	@Column(name = "pro_ord_comm")
 	private String proOrdComm;
+	
 	@Column(name = "pro_ord_payment")
 	private byte proOrdPayment;
+	
 	@Column(name = "pro_ord_shipment")
 	private byte proOrdShipment;
+	
 	@Column(name = "pro_tracking_no")
 	private String proTrackingNo;
+	
 	@Column(name = "pro_ord_shipdate")
 	private Timestamp proOrdShipdate;
 

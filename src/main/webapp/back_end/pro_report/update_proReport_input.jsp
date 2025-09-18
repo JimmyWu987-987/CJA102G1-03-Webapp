@@ -2,173 +2,111 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.proreport.model.*"%>
 <%@ page import="java.util.List"%>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 
-<% //見com.emp.controller.EmpServlet.java第163行存入req的empVO物件 (此為從資料庫取出的empVO, 也可以是輸入格式有錯誤時的empVO物件)
-
+<%
 ProReportVO proReportVO = (ProReportVO) request.getAttribute("proReportVO");
-
-
 %>
 
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>審核檢舉狀態 - update_ProReport_input.jsp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>審核檢舉狀態</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<style>
-  table#table-1 {
-	background-color: #CCCCFF;
-    border: 2px solid black;
-    text-align: center;
-  }
-  table#table-1 h4 {
-    color: red;
-    display: block;
-    margin-bottom: 1px;
-  }
-  h4 {
-    color: blue;
-    display: inline;
-  }
-</style>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
+    <script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
 
-<style>
-  table {
-	width: 450px;
-	background-color: white;
-	margin-top: 1px;
-	margin-bottom: 1px;
-  }
-  table, th, td {
-    border: 0px solid #CCCCFF;
-  }
-  th, td {
-    padding: 1px;
-  }
-</style>
-
+    <style>
+        .xdsoft_datetimepicker .xdsoft_datepicker {
+            width: 300px;
+        }
+        .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box {
+            height: 151px;
+        }
+    </style>
 </head>
-<body bgcolor='white'>
 
-<table id="table-1">
-	<tr><td>
-		 <h3>審核檢舉狀態 - update_ProReport_input.jspp</h3>
-		 <h4><a href="${pageContext.request.contextPath}/back_end/pro_report/select_page.jsp"><img 
-		 src="${pageContext.request.contextPath}/resource/images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
-	</td></tr>
-</table>
+<body class="bg-light">
 
-<h3>資料修改:</h3>
+<div class="container py-4">
 
-<%-- 錯誤表列 --%>
-<c:if test="${not empty errorMsgs}">
-	<font style="color:red">請修正以下錯誤:</font>
-	<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li style="color:red">${message}</li>
-		</c:forEach>
-	</ul>
-</c:if>
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+        <h3 class="mb-0">審核檢舉狀態</h3>
+        <a href="${pageContext.request.contextPath}/back_end/pro_report/select_page.jsp" class="btn btn-secondary d-flex align-items-center">
+            <img src="${pageContext.request.contextPath}/resource/images/back1.gif" width="20" height="20" class="me-2" alt="回首頁">
+            回首頁
+        </a>
+    </div>
 
-<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/proreport/proreport.do" name="form1">
-<table>
-	<tr>
-		<td>檢舉文章編號:<font color=red><b>*</b></font></td>
-		<td><%=proReportVO.getProRptId()%></td>
-	</tr>
-	<tr>
-		<td>商品編號:</td>
-		<td><input type="TEXT" name="proId" value="<%=proReportVO.getProId()%>" size="45" readonly/></td>
-	</tr>
-	<tr>
-		<td>申訴會員編號:</td>
-		<td><input type="TEXT" name="memId"   value="<%=proReportVO.getMemId()%>" size="45" readonly/></td>
-	</tr>
-	
-	<tr>
-		<td>檢舉日期:</td>
-		<td><input name="proRptAt" type="text" value="<%=proReportVO.getProRptAt()%>" readonly ></td> 
-	</tr>
-	<tr>
-		<td>檢舉標題:</td>
-		<td><input type="TEXT" name="proRptTitle"   value="<%=proReportVO.getProRptTitle()%>" size="45" readonly/></td>
-	</tr>
-	<tr>
-		<td>檢舉內容:</td>
-		<td><textarea name="proRptCont" rows="4" cols="30" readonly><%=proReportVO.getProRptCont()%></textarea></td>
-	</tr>
-	
-<%-- 	<tr>
-		<td>審核狀態:</td>
-		<td><input type="TEXT" name="prorptstatus"  value="<%=proReportVO.getProrptstatus()%>" size="45"/></td>
-	</tr> --%>
-	
-	<tr>
-		<td>審核狀態:</td>
-		<td>
-		<select size="1" name="proRptStatus" id="proRptStatusSelect">
-		<option value="0" <%=proReportVO.getProRptStatus() == 0 ? "selected" : ""%>>編輯中</option>
-		<option value="1" <%=proReportVO.getProRptStatus() == 1 ? "selected" : ""%>>待審核</option>
-		<option value="2" <%=proReportVO.getProRptStatus() == 2 ? "selected" : ""%>>審核通過</option>
-		<option value="3" <%=proReportVO.getProRptStatus() == 3 ? "selected" : ""%>>審核未過</option>
-	
-		</select>
-		</td>
-	</tr>
-	
+    <h4 class="mb-3">資料修改:</h4>
 
-</table>
-<br>
-<input type="hidden" name="action" value="update">
-<input type="hidden" name="proRptId" value="<%=proReportVO.getProRptId()%>">
-<input type="submit" value="送出修改">
+    <%-- 錯誤表列 --%>
+    <c:if test="${not empty errorMsgs}">
+        <div class="alert alert-danger" role="alert">
+            <p>請修正以下錯誤:</p>
+            <ul class="mb-0">
+                <c:forEach var="message" items="${errorMsgs}">
+                    <li>${message}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
 
-</FORM>
+    <c:if test="${not empty successMsgs}">
+        <div class="alert alert-success" role="alert">
+            ${successMsgs}
+        </div>
+    </c:if>
 
-<form method="post" action="<%=request.getContextPath()%>/proreport/proreport.do">
-	<input type="hidden" name="proId" value="<%=proReportVO.getProId()%>">
-	<input type="hidden" name="action" value="backToPage">
-	<input type="submit" value="回上一頁">
-</form>
+    <form method="post" action="<%=request.getContextPath()%>/proreport/proreport.do">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="proRptId" class="form-label">檢舉文章編號:</label>
+                <input type="text" class="form-control" id="proRptId" value="<%=proReportVO.getProRptId()%>" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="proId" class="form-label">商品編號:</label>
+                <input type="text" class="form-control" id="proId" name="proId" value="<%=proReportVO.getProId()%>" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="memId" class="form-label">申訴會員編號:</label>
+                <input type="text" class="form-control" id="memId" name="memId" value="<%=proReportVO.getMemId()%>" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="proRptAt" class="form-label">檢舉日期:</label>
+                <input type="text" class="form-control" id="proRptAt" name="proRptAt" value="<%=proReportVO.getProRptAt()%>" readonly>
+            </div>
+            <div class="col-12">
+                <label for="proRptTitle" class="form-label">檢舉標題:</label>
+                <input type="text" class="form-control" id="proRptTitle" name="proRptTitle" value="<%=proReportVO.getProRptTitle()%>" readonly>
+            </div>
+            <div class="col-12">
+                <label for="proRptCont" class="form-label">檢舉內容:</label>
+                <textarea class="form-control" id="proRptCont" name="proRptCont" rows="4" readonly><%=proReportVO.getProRptCont()%></textarea>
+            </div>
+            <div class="col-12">
+                <label for="proRptStatusSelect" class="form-label">審核狀態:</label>
+                <select class="form-select" name="proRptStatus" id="proRptStatusSelect">
+                    <option value="0" <%=proReportVO.getProRptStatus() == 0 ? "selected" : ""%>>編輯中</option>
+                    <option value="1" <%=proReportVO.getProRptStatus() == 1 ? "selected" : ""%>>待審核</option>
+                    <option value="2" <%=proReportVO.getProRptStatus() == 2 ? "selected" : ""%>>審核通過</option>
+                    <option value="3" <%=proReportVO.getProRptStatus() == 3 ? "selected" : ""%>>審核未過</option>
+                </select>
+            </div>
+        </div>
 
-
-
-
-
-<%-- 新增成功列表 --%>
-<c:if test="${not empty successMsgs}">
-	<ul>
-			<li style="color:red">${successMsgs}</li>
-	</ul>
-</c:if>
+        <div class="d-grid gap-2 d-md-block mt-4">
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="proRptId" value="<%=proReportVO.getProRptId()%>">
+            <button type="submit" class="btn btn-primary btn-lg me-md-2">送出修改</button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="window.history.back();">回上一頁</button>
+        </div>
+    </form>
+</div>
 
 </body>
-
-
-
-
-
-<!-- =========================================以下為 datetimepicker 之相關設定========================================== -->
-
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
-<script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
-<script src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
-
-<style>
-  .xdsoft_datetimepicker .xdsoft_datepicker {
-           width:  300px;   /* width:  300px; */
-  }
-  .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box {
-           height: 151px;   /* height:  151px; */
-  }
-</style>
-
-
-
-
-<script>
-   
-        
-</script>
 </html>
