@@ -1,57 +1,62 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
-<%@ page import="java.util.* ,com.shoppingcart.model.BOOK"%>
+<%@ page import="java.util.* ,com.product.model.*"%>
 <html>
 <head>
- <title>Mode II 範例程式 - Checkout.jsp</title>
- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/ShoppingCart.css">
- </head>
+    <title>Mode II 範例程式 - 結帳</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 <body>
-<img src="images/tomcat.gif"> <font size="+3">網路書店 - 結帳：（Checkout.jsp）</font>
-<hr><p>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">小農商城 - 結帳</h1>
+        <hr>
 
-<table id="table-1" style="margin: auto;">
-	<tr>
-		<th width="200">書名</th>
-		<th width="100">作者</th>
-		<th width="100">出版社</th>
-		<th width="100">價格</th>
-		<th width="100">數量</th>
-		<th width="120"><h3>總價</h3></th>
-	</tr></table><table style="margin: auto;">
+        <%
+            @SuppressWarnings("unchecked")
+            Vector<ProductVO> buylist = (Vector<ProductVO>) session.getAttribute("shoppingcart");
+            String amount =  (String) request.getAttribute("amount");
+        %>
 
-	<%  @SuppressWarnings("unchecked")
-		Vector<BOOK> buylist = (Vector<BOOK>) session.getAttribute("shoppingcart");
-		String amount =  (String) request.getAttribute("amount");
-	%>	
-	<%	for (int i = 0; i < buylist.size(); i++) {
-			BOOK order = buylist.get(i);
-			String name = order.getName();
-			String author = order.getAuthor();
-			String publisher = order.getPublisher();
-			Double price = order.getPrice();
-			Integer quantity = order.getQuantity();
-	%>
-	<tr>
-		<td width="200"><%=name%>     </td>
-		<td width="100"><%=author%>   </td>
-		<td width="100"><%=publisher%></td>
-		<td width="100"><%=price%>    </td>
-		<td width="100"><%=quantity%> </td><td width="120"></td>
-	</tr>
-	<%
-		}
-	%>
-	 
-	
-	<tr>
-		<td colspan="6" style="text-align:right;"> 
-		   <font size="+2">總金額： <h4>$<%=amount%></h4> </font>
-	    </td>
-	</tr>
-</table>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">商品編號</th>
+                        <th scope="col">商品名稱</th>
+                        <th scope="col">商品產地</th>
+                        <th scope="col">價格</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">該商品總價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%  for (int i = 0; i < buylist.size(); i++) {
+                        ProductVO order = buylist.get(i);
+                        Integer proid = order.getProid();
+                        String proname = order.getProname();
+                        String profrom = order.getProfrom();
+                        Integer proprice = order.getProprice();
+                        Integer prostock = order.getProstock();
+                    %>
+                    <tr>
+                        <td><%=proid%></td>
+                        <td><%=proname%></td>
+                        <td><%=profrom%></td>
+                        <td><%=proprice%></td>
+                        <td><%=prostock%></td>
+                        <td><%=proprice * prostock%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end mt-4 p-3 border rounded bg-light">
+            <h4 class="mb-0">訂單總金額：<span class="text-danger fw-bold">$<%=amount%></span></h4>
+        </div>
        
-       
-       <p><a href="EShop.jsp"><font size="+1"> 是 否 繼 續 購 物</font></a>
-
+        <p class="text-center mt-5">
+            <a href="<%=request.getContextPath() %>/front_end/shopping_cart/EShop.jsp" class="btn btn-outline-primary btn-lg">是 否 繼 續 購 物</a>
+        </p>
+    </div>
 </body>
 </html>

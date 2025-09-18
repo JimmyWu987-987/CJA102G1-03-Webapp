@@ -3,7 +3,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
-import com.shoppingcart.model.BOOK;
+import com.product.model.ProductVO;
+
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,7 +23,7 @@ public class ShoppingServlet extends HttpServlet {
 
 		
 		@SuppressWarnings("unchecked")
-		List<BOOK> buylist = (Vector<BOOK>) session.getAttribute("shoppingcart");
+		List<ProductVO> buylist = (Vector<ProductVO>) session.getAttribute("shoppingcart");
 		String action = req.getParameter("action");
 
 		if (!action.equals("CHECKOUT")) {
@@ -36,60 +37,61 @@ public class ShoppingServlet extends HttpServlet {
 			// 新增書籍至購物車中
 			else if (action.equals("ADD")) {
 				// 取得後來新增的書籍
-				BOOK abook = getBook(req);
+				ProductVO aproduct = getProduct(req);
 
 				if (buylist == null) {
-					buylist = new Vector<BOOK>();
-					buylist.add(abook);
+					buylist = new Vector<ProductVO>();
+					buylist.add(aproduct);
 				} else {
-					if (buylist.contains(abook)) {
-						BOOK innerBOOK = buylist.get(buylist.indexOf(abook));
-						innerBOOK.setQuantity(innerBOOK.getQuantity() + abook.getQuantity());
+					if (buylist.contains(aproduct)) {
+						ProductVO innerBOOK = buylist.get(buylist.indexOf(aproduct));
+						innerBOOK.setProstock(innerBOOK.getProstock() + aproduct.getProstock());
 					} else {
-						buylist.add(abook);
+						buylist.add(aproduct);
 					}
 				}
 			}
 
 			session.setAttribute("shoppingcart", buylist);
-			String url = "/EShop.jsp";
+			String url = "/front_end/shopping_cart/EShop.jsp";
 			RequestDispatcher rd = req.getRequestDispatcher(url);
 			rd.forward(req, res);
 		}
 
 		// 結帳，計算購物車書籍價錢總數
 		else if (action.equals("CHECKOUT")) {
-			double total = 0;
+			int total = 0;
 			for (int i = 0; i < buylist.size(); i++) {
-				BOOK order = buylist.get(i);
-				Double price = order.getPrice();
-				Integer quantity = order.getQuantity();
-				total += (price * quantity);
+				ProductVO order = buylist.get(i);
+				Integer price = order.getProprice();
+				Integer prostock = order.getProstock();
+				total += (price * prostock);
 			}
 
 			String amount = String.valueOf(total);
 			req.setAttribute("amount", amount);
-			String url = "/Checkout.jsp";
+			String url = "/front_end/shopping_cart/Checkout.jsp";
 			RequestDispatcher rd = req.getRequestDispatcher(url);
 			rd.forward(req, res);
 		}
 	}
 
-	private BOOK getBook(HttpServletRequest req) {
+	private ProductVO getProduct(HttpServletRequest req) {
 
-		String quantity = req.getParameter("quantity");
-		String name = req.getParameter("name");
-		String author = req.getParameter("author");
-		String publisher = req.getParameter("publisher");
-		String price = req.getParameter("price");
+		String prostock = req.getParameter("prostock");
+		String proid = req.getParameter("proid");
+		String proname = req.getParameter("proname");
+		String proprice = req.getParameter("proprice");
+		String profrom = req.getParameter("profrom");
 
-		BOOK book = new BOOK();
-
-		book.setName(name);
-		book.setAuthor(author);
-		book.setPublisher(publisher);
-		book.setPrice(new Double(price));
-		book.setQuantity((new Integer(quantity)).intValue());
-		return book;
+		ProductVO product = new ProductVO();
+		
+		product.setProid(Integer.valueOf(proid));
+		product.setProname(proname);
+		product.setProprice(Integer.valueOf(proprice));
+		product.setProfrom(profrom);
+		product.setProstock(Integer.valueOf(prostock));
+		
+		return product;
 	}
 }

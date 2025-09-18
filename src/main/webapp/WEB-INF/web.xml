@@ -15,4 +15,14 @@
     <servlet-name>ProReportServlet</servlet-name>
     <url-pattern>/proreport/proreport.do</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ShoppingServlet</servlet-name>
+    <servlet-class>com.shoppingcart.controller.ShoppingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingServlet</servlet-name>
+    <url-pattern>/shoppingcart/shoppingcart.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

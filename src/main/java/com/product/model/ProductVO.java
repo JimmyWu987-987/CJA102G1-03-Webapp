@@ -1,5 +1,6 @@
 package com.product.model;
 
+
 public class ProductVO implements java.io.Serializable{
 	private	Integer	proid;
 	private String proname;
@@ -62,6 +63,29 @@ public class ProductVO implements java.io.Serializable{
 		this.fmemid = fmemid;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((proid == null) ? 0 : proid.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductVO other = (ProductVO) obj;
+		if (proid == null) {
+			if (other.proid != null)
+				return false;
+		} else if (!proid.equals(other.proid))
+			return false;
+		return true;
+	}
 
 }
